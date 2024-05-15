@@ -1,0 +1,8 @@
+.panels{
+    border: 1px solid green;
+    /* height: 500px; */
+}
+.divvvv{
+    display: flex;
+    gap: 10px;
+}
