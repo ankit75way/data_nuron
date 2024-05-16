@@ -37,8 +37,6 @@ function App() {
    
     <CreateComponents  getComponentsData={getComponentsData}/>
     {loading ?  <Loading />:  <Dashboard components={components} handleUpdateComponent={handleUpdateComponent} handleDeleteComponent={handleDeleteComponent} />}
-   
-   
     </>
   );
 }
