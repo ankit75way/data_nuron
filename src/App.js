@@ -5,35 +5,41 @@ import { useEffect, useState } from 'react';
 import { HttpClient } from './service/HttpClient';
 import { deleteComponent, getComponent, updateComponet } from './service/Apis';
 import CreateComponents from './components/create-component/CreateComponents';
+import Loading from './components/loading/Loading';
 HttpClient.setAxiosDefaultConfig()
 function App() {
-
+  const [loading, setLoading ] = useState(false)
   const [components,setComponents] = useState([])
   useEffect(()=>{
-    getComponentsData()
+    getComponentsData(true)
   },[])
-  const getComponentsData = () => {
+  const getComponentsData = (loading=false) => {
+    setLoading(loading)
     getComponent().then(res=>{
       setComponents(res.data)
+      setLoading(false)
     })
   }
 
   const handleUpdateComponent = (payload) => {
     updateComponet(payload).then(res=>{
-      getComponentsData()
+      getComponentsData(false)
     })
   }
 
   const handleDeleteComponent = (id) => {
     deleteComponent(id).then(res=>{
-      getComponentsData()
+      getComponentsData(true)
     })
   }
   return (
     <>
     
+   
     <CreateComponents  getComponentsData={getComponentsData}/>
-    <Dashboard components={components} handleUpdateComponent={handleUpdateComponent} handleDeleteComponent={handleDeleteComponent} />
+    {loading ?  <Loading />:  <Dashboard components={components} handleUpdateComponent={handleUpdateComponent} handleDeleteComponent={handleDeleteComponent} />}
+   
+   
     </>
   );
 }
