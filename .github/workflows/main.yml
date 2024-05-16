@@ -1,0 +1,37 @@
+name: Node.js CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [18.x]
+    steps:
+    - name: Print Netlify Site ID
+      env:
+         GITHUB_CONTEXT: ${{secrets.NETLIFY_SITE_ID}}
+      run: echo "Netlify Site ID is $GITHUB_CONTEXT"
+    - name: Install Netlify
+      run: npm install netlify-cli@17.10.1 -g
+    - uses: actions/checkout@v2
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - run: npm i
+    - run: npm run build --if-present
+    - name: Deploy to Netlify
+      id: netlify_deploy
+      run: |
+        netlify deploy --prod \
+          --dir build \
+          --site ${{ secrets.NETLIFY_SITE_ID }} \
+          --auth ${{ secrets.NETLIFY_API_TOKEN }}
