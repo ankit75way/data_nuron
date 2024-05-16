@@ -1,6 +1,5 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React from "react";
 import "./dashboard.css";
-import { Resizable } from "re-resizable";
 import ResizeComponent from "./resize-component/ResizeComponent";
 import Box from "./box-component/Box";
 
