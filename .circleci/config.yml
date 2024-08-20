@@ -8,8 +8,6 @@ jobs:
     executor: node/default
     steps:
       - checkout
-      - node/install-packages:
-          pkg-manager: npm
       - run:
           name: Run install
           command: npm install
@@ -18,8 +16,6 @@ jobs:
     executor: node/default
     steps:
       - checkout
-      - node/install-packages:
-          pkg-manager: npm
       - run:
           command: npm run build
 
