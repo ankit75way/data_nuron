@@ -26,8 +26,8 @@ jobs:
 workflows:
   build-and-test:
     jobs:
-      build:
-        filters:
-          branches:
-             only:
-              - main2
+      - build-node:
+          filters:
+            branches:
+              only:
+                - main2
