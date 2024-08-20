@@ -13,7 +13,7 @@ jobs:
           command: git branch
       - run:
           name: Run install
-          command: npm install
+          command: npm install --verbose
 
   build-node:
     executor: node/default
@@ -24,7 +24,7 @@ jobs:
           command: git branch
       - run:
           name: Run install
-          command: npm install
+          command: npm install --verbose
       - run:
           name: Build Project
           command: npm run build
