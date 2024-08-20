@@ -30,7 +30,7 @@ workflows:
       - build-node:
           requires:
             - test-node
-    filters:
-      branches:
-        only:
-          - main2
+ general:
+  branches:
+    only:
+     - master 
