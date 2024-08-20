@@ -9,19 +9,18 @@ jobs:
     steps:
       - checkout
       - run:
-          name: branch 
+          name: Show Branch
           command: git branch
-
+      - run:
           name: Run install
           command: npm install
-
-         
 
   build-node:
     executor: node/default
     steps:
       - checkout
       - run:
+          name: Build Project
           command: npm run build
 
 workflows:
