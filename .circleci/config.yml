@@ -9,8 +9,13 @@ jobs:
     steps:
       - checkout
       - run:
+          name: branch 
+          command: git branch
+
           name: Run install
           command: npm install
+
+         
 
   build-node:
     executor: node/default
