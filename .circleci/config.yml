@@ -19,6 +19,9 @@ jobs:
     executor: node/default
     steps:
       - checkout
+       - run:
+          name: Show Branch
+          command: git branch
       - run:
           name: Run install
           command: npm install
