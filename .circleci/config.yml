@@ -8,6 +8,7 @@ jobs:
     executor: node/default
     steps:
       - checkout
+      - run: git checkout master
       - node/install-packages:
           pkg-manager: npm
       - run:
@@ -30,7 +31,3 @@ workflows:
       - build-node:
           requires:
             - test-node
- general:
-  branches:
-    only:
-     - master 
