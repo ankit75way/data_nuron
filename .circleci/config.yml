@@ -23,3 +23,13 @@ jobs:
           pkg-manager: npm
       - run:
           command: npm run build
+workflows:
+  build-and-test:
+    jobs:
+      - test-node
+      - build-node:
+          requires:
+            - test-node
+    # - deploy:
+    #     requires:
+    #       - build-node
