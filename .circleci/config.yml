@@ -19,7 +19,7 @@ jobs:
     executor: node/default
     steps:
       - checkout
-       - run:
+      - run:
           name: Show Branch
           command: git branch
       - run:
